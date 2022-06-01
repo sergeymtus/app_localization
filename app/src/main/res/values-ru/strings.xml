@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа</string>
+    <string name="post_menu">Меню</string>
+    <string name="views">10</string>
 </resources>
