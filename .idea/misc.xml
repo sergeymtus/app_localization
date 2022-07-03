@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.202" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.202" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1195" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_like_24.xml" value="0.2465" />
@@ -10,6 +12,7 @@
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_menu_24.xml" value="0.2465" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/card_post.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/menu/post_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2585" />
       </map>
     </option>
