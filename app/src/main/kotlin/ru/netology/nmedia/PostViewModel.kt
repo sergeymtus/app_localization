@@ -55,4 +55,8 @@ class PostViewModel : ViewModel() {
         }
 
     }
+
+    fun cancelEdit(){
+        edited.value = empty
+    }
 }

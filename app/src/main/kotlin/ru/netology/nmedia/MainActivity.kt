@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                 setText("")
                 AndroidUtils.hideKeyboard(this)
 
+
             }
         }
 
@@ -102,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             with(binding.content){
                 setText(it.content)
                 requestFocus()
+
 
             }
 
@@ -125,16 +127,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.editCancel.setOnClickListener {
-            with(binding.content) {
+        viewModel.edited.observe(this) { post ->
+            binding.editCancel.setOnClickListener {
+                with(binding.content) {
 
-                clearFocus()
-                setText("")
+                    clearFocus()
+                    setText("")
 
-                AndroidUtils.hideKeyboard(this)
-                binding.group.visibility = View.GONE
+
+                    AndroidUtils.hideKeyboard(this)
+                    binding.group.visibility = View.GONE
+                    viewModel.cancelEdit()
+
+                }
+
             }
-        }
+
+
+       }
+
+//        binding.editCancel.setOnClickListener {
+//                with(binding.content) {
+//
+//                    clearFocus()
+//                    setText("")
+//
+//
+//                    AndroidUtils.hideKeyboard(this)
+//                    binding.group.visibility = View.GONE
+//
+//                }
+//            }
+
         //конец отмены редактирования
 
 
