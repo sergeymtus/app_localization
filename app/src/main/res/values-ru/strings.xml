@@ -8,4 +8,6 @@
     <string name="post_text">Текст поста</string>
     <string name="edit">Редактировать</string>
     <string name="empty_text_error">Пустой Текст</string>
+    <string name="post_like">Кнопка Лайк</string>
+    <string name="share_button">Кнопка Поделиться</string>
 </resources>
