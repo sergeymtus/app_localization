@@ -7,4 +7,6 @@
     <string name="post_text">Post text</string>
     <string name="empty_text_error">Text Is Empty</string>
     <string name="edit">Edit</string>
+    <string name="post_like">Post Like</string>
+    <string name="share_button">Share Button</string>
 </resources>
