@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText"
+    >
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/list"
@@ -15,57 +17,69 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintBottom_toTopOf="@id/content"
+      app:layout_constraintBottom_toBottomOf="parent"
       tools:listitem="@layout/card_post"
       />
 
-
-  <androidx.constraintlayout.widget.Group
-      android:id="@+id/group"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:visibility="gone"
-      app:constraint_referenced_ids="editCancel" />
-
-
-
-  <ImageView
-      android:id="@+id/editCancel"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="24dp"
-      android:layout_marginBottom="4dp"
-      android:padding="0dp"
-      app:layout_constraintBottom_toTopOf="@id/save"
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/button_ok"
+      app:srcCompat = "@drawable/ic_baseline_check_circle_24"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:srcCompat="@drawable/ic_baseline_cancel_24" />
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:contentDescription="TODO" />
 
 
 
 
-  <EditText
-          android:id="@+id/content"
-          android:padding="@dimen/common_spacing"
-          android:background="@android:color/transparent"
-          android:importantForAutofill="no"
-          android:inputType="textMultiLine"
-          app:layout_constraintEnd_toStartOf="@id/save"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          android:hint="@string/post_text"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          />
+
+<!--  <androidx.constraintlayout.widget.Group-->
+<!--      android:id="@+id/group"-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:visibility="gone"-->
+<!--      app:constraint_referenced_ids="editCancel" />-->
 
 
-        <ImageView
-            android:id="@+id/save"
-            app:srcCompat="@drawable/ic_baseline_send_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/common_spacing"
-            />
+
+<!--  <ImageView-->
+<!--      android:id="@+id/editCancel"-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_marginEnd="24dp"-->
+<!--      android:layout_marginBottom="4dp"-->
+<!--      android:padding="0dp"-->
+<!--      app:layout_constraintBottom_toTopOf="@id/save"-->
+<!--      app:layout_constraintEnd_toEndOf="parent"-->
+<!--      app:srcCompat="@drawable/ic_baseline_cancel_24" />-->
+
+
+
+
+<!--  <EditText-->
+<!--          android:id="@+id/content"-->
+<!--          android:padding="@dimen/common_spacing"-->
+<!--          android:background="@android:color/transparent"-->
+<!--          android:importantForAutofill="no"-->
+<!--          android:inputType="textMultiLine"-->
+<!--          app:layout_constraintEnd_toStartOf="@id/save"-->
+<!--          app:layout_constraintBottom_toBottomOf="parent"-->
+<!--          app:layout_constraintStart_toStartOf="parent"-->
+<!--          android:hint="@string/post_text"-->
+<!--          android:layout_width="0dp"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          />-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/save"-->
+<!--            app:srcCompat="@drawable/ic_baseline_send_24"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="@dimen/common_spacing"-->
+<!--            />-->
 
   </androidx.constraintlayout.widget.ConstraintLayout>
