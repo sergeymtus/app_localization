@@ -66,6 +66,16 @@ class InMemoryPostRepositoryImpl : PostRepository {
 //        data.value = post
 //    }
 
+
+    override fun editById(id: Long, content: String) {
+
+        posts = posts.map {
+            if (it.id != id) it else it.copy(content = content)
+        }
+
+        data.value = posts
+    }
+
     override fun likeById(id: Long) {
         posts = posts.map {
             if (it.id != id) it else

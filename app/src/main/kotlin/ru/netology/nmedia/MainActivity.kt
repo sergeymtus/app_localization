@@ -13,6 +13,7 @@ import androidx.activity.viewModels
 import ru.netology.nmedia.data.AndroidUtils
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.ui.NewPostResultContract
+import ru.netology.nmedia.PostViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,21 @@ class MainActivity : AppCompatActivity() {
         val result = it ?: return@registerForActivityResult
         viewModel.changeContent(result)
         viewModel.save()
+    }
+
+    private val editPostLauncher = registerForActivityResult(EditPostResultContract()){
+        val result = it ?: return@registerForActivityResult
+//        viewModel.changeContent(result)
+//        viewModel.save()
+        val arrTemp = result.split("<??!!!??>")
+
+        if (arrTemp.size != 2) return@registerForActivityResult
+
+        viewModel.editById(arrTemp[0].toLong(), arrTemp[1])
+
+
+
+
     }
 
 
@@ -65,7 +81,8 @@ class MainActivity : AppCompatActivity() {
 
             object : PostInteractionListener{
                 override fun onEdit(post: Post) {
-                    viewModel.edit(post)
+                    //viewModel.edit(post)
+                    editPostLauncher.launch(post)
                 }
 
                 override fun onLike(post: Post) {
