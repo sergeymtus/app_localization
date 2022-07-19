@@ -1,5 +1,6 @@
 package ru.netology.nmedia
 
+import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 //import ru.netology.R
@@ -64,6 +65,19 @@ class PostViewHolder(
             share.setOnClickListener {
                 listener.onShare(post)
             }
+
+
+            if (post.video.isNullOrBlank()) groupVideo.visibility = View.GONE else groupVideo.visibility = View.VISIBLE
+
+            videoPlayButton.setOnClickListener{
+                listener.onVideoLink(post)
+            }
+
+            videoImage.setOnClickListener {
+                listener.onVideoLink(post)
+            }
+
+
 
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {

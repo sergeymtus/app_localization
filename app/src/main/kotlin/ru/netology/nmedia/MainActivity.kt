@@ -14,6 +14,8 @@ import ru.netology.nmedia.data.AndroidUtils
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.ui.NewPostResultContract
 import ru.netology.nmedia.PostViewModel
+import android.net.Uri
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -106,6 +108,11 @@ class MainActivity : AppCompatActivity() {
 //                val chooserIntent = Intent.createChooser(intent, null)
 //
 //                startActivity(chooserIntent)
+                }
+
+                override fun onVideoLink(post: Post) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                    startActivity(intent)
                 }
 
             }
