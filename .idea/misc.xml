@@ -14,13 +14,17 @@
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_liked_24.xml" value="0.1095" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_menu_24.xml" value="0.2465" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_views_24.xml" value="0.1915" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_app.xml" value="0.26875" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_edit_post.xml" value="0.25" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_intent_handler.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/card_post.xml" value="0.25" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_feed.xml" value="0.26875" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_new_post.xml" value="0.26875" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/new_post_activity.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/menu/post_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2585" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.187" />
       </map>
     </option>
   </component>

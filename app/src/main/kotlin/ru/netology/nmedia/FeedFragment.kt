@@ -9,18 +9,25 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.launch
-import ru.netology.nmedia.databinding.ActivityMainBinding
+//import ru.netology.nmedia.ActivityMainBinding
 import androidx.activity.viewModels
 import ru.netology.nmedia.data.AndroidUtils
-import ru.netology.nmedia.databinding.CardPostBinding
+//import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.ui.NewPostResultContract
 import ru.netology.nmedia.PostViewModel
 import android.net.Uri
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import ru.netology.nmedia.databinding.FragmentFeedBinding
 
 
-class MainActivity : AppCompatActivity() {
+class FeedFragment : Fragment() {
 
-    private val viewModel: PostViewModel by viewModels()
+    private val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
 
     private val newPostLauncher = registerForActivityResult(NewPostResultContract()){
@@ -45,12 +52,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding = FragmentFeedBinding.inflate(inflater, container, false)
 
 
 
@@ -80,9 +88,8 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
-        val adapter = PostsAdapter(
+        val adapter = PostsAdapter(object : PostInteractionListener {
 
-            object : PostInteractionListener{
                 override fun onEdit(post: Post) {
                     //viewModel.edit(post)
                     editPostLauncher.launch(post)
@@ -116,11 +123,11 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
-            }
+            })
 //            onLikeListener = { viewModel.likeById(it.id) },
 //            onShareListener = { viewModel.shareById(it.id) },
 //            onRemoveListener = { viewModel.removeById(it.id) }
-        )
+
 
 //        binding.save.setOnClickListener {
 //            with(binding.content) {
@@ -160,16 +167,21 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
+        binding.buttonOk.setOnClickListener {
+            //newPostLauncher.launch()
+            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
+
+        }
+
+
         binding.list.adapter = adapter
-        viewModel.data.observe(this){ posts ->
-            //adapter.List = posts
+        viewModel.data.observe(viewLifecycleOwner) { posts ->
+            //adapter.list = posts}
             adapter.submitList(posts)
         }
 
+        return binding.root
 
-        binding.buttonOk.setOnClickListener{
-            newPostLauncher.launch()
-        }
 
 
 
