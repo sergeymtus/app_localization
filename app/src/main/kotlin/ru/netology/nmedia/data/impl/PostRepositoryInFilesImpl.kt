@@ -10,7 +10,7 @@ import ru.netology.nmedia.Post
 
 //class InMemoryPostRepositoryImpl : PostRepository {
 
-    class InMemoryPostRepositoryImpl  (
+    class PostRepositoryInFilesImpl  (
         private val context: Context
     ) : PostRepository {
 
@@ -178,7 +178,12 @@ import ru.netology.nmedia.Post
             data.value = posts
         }
 
+        override fun getPostById(id: Long): Post {
+            val post1Element = posts.filter { it.id == id }
+            //if (post1Element.size == 0) return null
 
+            return post1Element.first()
+        }
 
 
 //    override fun save(post: Post) {

@@ -32,6 +32,9 @@ class PostViewHolder(
 //            like.setImageResource(
 //                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
 //            )
+            if (post.video.isNullOrBlank()) groupVideo.visibility = View.GONE else groupVideo.visibility = View.VISIBLE
+
+
             menu.setOnClickListener{
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
@@ -67,8 +70,6 @@ class PostViewHolder(
             }
 
 
-            if (post.video.isNullOrBlank()) groupVideo.visibility = View.GONE else groupVideo.visibility = View.VISIBLE
-
             videoPlayButton.setOnClickListener{
                 listener.onVideoLink(post)
             }
@@ -77,6 +78,9 @@ class PostViewHolder(
                 listener.onVideoLink(post)
             }
 
+            rootXmlElement.setOnClickListener {
+                listener.onOpenPost(post)
+            }
 
 
             menu.setOnClickListener {

@@ -22,6 +22,7 @@ interface PostInteractionListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onVideoLink(post: Post) {}
+    fun onOpenPost(post: Post) {}
 }
 
 //class PostsAdapter (private val onLikeListener: OnLikeListener): RecyclerView.Adapter<PostViewHolder>(){

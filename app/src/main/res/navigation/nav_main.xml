@@ -13,10 +13,31 @@
         <action
             android:id="@+id/action_feedFragment_to_newPostFragment"
             app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_postCardFragment"
+            app:destination="@id/postCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPostFragment"
         android:name="ru.netology.nmedia.NewPostFragment"
         android:label="fragment_new_post"
         tools:layout="@layout/fragment_new_post" />
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="ru.netology.nmedia.EditPostFragment"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post" />
+    <fragment
+        android:id="@+id/postCardFragment"
+        android:name="ru.netology.nmedia.PostCardFragment"
+        android:label="card_post"
+
+        tools:layout="@layout/card_post" >
+        <action
+            android:id="@+id/action_postCardFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+    </fragment>
 </navigation>
