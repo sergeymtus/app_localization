@@ -32,7 +32,8 @@
 
         <activity
             android:name="AppActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
 
             <nav-graph android:value="@navigation/nav_main" />
 

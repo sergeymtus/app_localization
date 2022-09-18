@@ -13,6 +13,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.data.AndroidUtils
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
+import android.widget.EditText
+import android.widget.TextView
+
 
 //import ru.netology.nmedia.databinding.NewPostActivityBinding
 
@@ -29,15 +32,14 @@ class NewPostFragment : Fragment() {
 
         val binding = FragmentNewPostBinding.inflate(inflater, container, false)
 
-        with (binding) {
-            buttonOk.setOnClickListener{
-                viewModel.changeContent(text.text.toString())
-                viewModel.save()
-
-                AndroidUtils.hideKeyboard(requireView())
-                findNavController().navigateUp()
-
-
+        with(binding) {
+            buttonOk.setOnClickListener {
+//                viewModel.changeContent(text.text.toString())
+//                viewModel.save()
+//
+//                AndroidUtils.hideKeyboard(requireView())
+//                findNavController().navigateUp()
+                buttonOkListener(it, text)
 
 
 //                if (text.text.isNullOrBlank()) {
@@ -56,9 +58,23 @@ class NewPostFragment : Fragment() {
 //                }
 //
 //                finish()
+
             }
+
+            return binding.root
+
         }
 
-        return binding.root
+
+
     }
+    private fun buttonOkListener(view: View, editText: EditText) {
+        viewModel.changeContent(editText.text.toString())
+        viewModel.save()
+
+        AndroidUtils.hideKeyboard(requireView())
+        val navigateUp = findNavController().navigateUp()
+
+    }
+
 }

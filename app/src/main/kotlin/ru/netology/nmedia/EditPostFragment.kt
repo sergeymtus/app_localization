@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.FeedFragment.Companion.postIdArg
 import ru.netology.nmedia.FeedFragment.Companion.textArg
 import ru.netology.nmedia.databinding.FragmentEditPostBinding
+import android.widget.EditText
+
 
 
 class EditPostFragment : Fragment() {
@@ -68,6 +70,9 @@ class EditPostFragment : Fragment() {
 
                     findNavController().navigateUp()
                 }
+
+
+
 
                 return binding.root
             }

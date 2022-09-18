@@ -38,33 +38,43 @@ class PostCardFragment : Fragment() {
         viewModel.data.observe(viewLifecycleOwner) { posts ->
 
 //            val post = viewModel.getPostById(postId)
-            val post = posts.first { it.id == postId }
+            val post = posts.firstOrNull { it.id == postId }
 
             with(binding) {
-            author.text = post.author
-            published.text = post.published
-            content.text = post.content
+            author.text = post?.author
+            published.text = post?.published
+            content.text = post?.content
             //           likes.text = countNumber(post.likesCount)
-            like.text = countNumber(post.likesCount)
+                if (post != null) {
+                    like.text = countNumber(post.likesCount)
+                }
 //            shares.text = countNumber(post.shareCountValue)
-            share.text = countNumber(post.shareCountValue)
-            views.text = post.viewCountValue.toString()
+                if (post != null) {
+                    share.text = countNumber(post.shareCountValue)
+                }
+            views.text = post?.viewCountValue.toString()
 
-            like.isChecked = post.likedByMe
+                if (post != null) {
+                    like.isChecked = post.likedByMe
+                }
 //            like.setImageResource(
 //                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
 //            )
 
 
             like.setOnClickListener {
-                viewModel.likeById(post.id)
+                if (post != null) {
+                    viewModel.likeById(post.id)
+                }
             }
 
             share.setOnClickListener {
-                viewModel.shareById(post.id)
+                if (post != null) {
+                    viewModel.shareById(post.id)
+                }
 
                 val intent = Intent(Intent.ACTION_SEND).apply {
-                    putExtra(Intent.EXTRA_TEXT, post.content)
+                    putExtra(Intent.EXTRA_TEXT, post?.content)
                     type = "text/plain"
                 }
 
@@ -72,16 +82,16 @@ class PostCardFragment : Fragment() {
             }
 
 
-            if (post.video.isNullOrBlank()) groupVideo.visibility =
+            if (post?.video.isNullOrBlank()) groupVideo.visibility =
                 android.view.View.GONE else groupVideo.visibility = android.view.View.VISIBLE
 
             videoPlayButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post?.video))
                 startActivity(intent)
             }
 
             videoImage.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post?.video))
                 startActivity(intent)
             }
 
@@ -96,15 +106,19 @@ class PostCardFragment : Fragment() {
                     setOnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.remove -> {
-                                viewModel.removeById(post.id)
+                                if (post != null) {
+                                    viewModel.removeById(post.id)
+                                }
                                 findNavController().navigateUp()
                                 true
                             }
                             R.id.edit -> {
                                 findNavController().navigate(R.id.action_postCardFragment_to_editPostFragment,
                                     Bundle().apply {
-                                        textArg = post.content
-                                        postIdArg = post.id
+                                        textArg = post?.content
+                                        if (post != null) {
+                                            postIdArg = post.id
+                                        }
                                     })
                                 true
                             }

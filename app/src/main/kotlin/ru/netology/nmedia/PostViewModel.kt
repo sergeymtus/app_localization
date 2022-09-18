@@ -1,11 +1,13 @@
 package ru.netology.nmedia
 
+
+
+import PostRepositorySQLiteImpl
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
-import ru.netology.nmedia.data.impl.PostRepositoryInFilesImpl
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-
+import ru.netology.nmedia.sql.AppDb
 
 
 private val empty = Post(
@@ -24,7 +26,10 @@ private val empty = Post(
 //class PostViewModel : ViewModel() {
 class PostViewModel(application: Application) : AndroidViewModel(application) {
 //    private val repository: PostRepository = InMemoryPostRepositoryImpl()
-    private val repository: PostRepository = PostRepositoryInFilesImpl(application)
+    //private val repository: PostRepository = PostRepositoryInFilesImpl(application)
+    private val repository: PostRepository = PostRepositorySQLiteImpl(
+    AppDb.getInstance(application).postDao
+    )
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
     fun likeById(id: Long) = repository.likeById(id)
@@ -62,7 +67,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun getPostById(id: Long): Post {
+    fun getPostById(id: Long): Post? {
         val post = repository.getPostById(id)
         //if (post == null) return empty
 
