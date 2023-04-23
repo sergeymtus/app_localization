@@ -4,16 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPostFragment">
-
+    tools:context=".nmedia.ui.NewPostFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="New post"
+        android:text="@string/textNewPost"
         />
-
-
 
     <EditText
         android:id="@+id/text"
@@ -22,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginBottom="?actionBarSize"
-        android:padding="10dp"
+        android:padding="@dimen/mainContentPadding"
         />
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -33,7 +30,7 @@
         android:layout_height="wrap_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_ok"
+        android:id="@+id/buttonOk"
         app:srcCompat = "@drawable/ic_baseline_check_circle_24"
         app:layout_anchor="@id/abb_bar"
         android:layout_width="wrap_content"

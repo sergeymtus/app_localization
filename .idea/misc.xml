@@ -3,25 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_add_24dp.xml" value="0.1885" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.202" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.1915" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.1915" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.202" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1195" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_like_24.xml" value="0.2465" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_like_24dp.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_liked_24.xml" value="0.1095" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_menu_24.xml" value="0.2465" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_netology_48dp.xml" value="0.1885" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_share_24.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/drawable/ic_views_24.xml" value="0.1915" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_app.xml" value="0.26875" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_edit_post.xml" value="0.25" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_intent_handler.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/card_post.xml" value="0.25" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_edit_post.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_feed.xml" value="0.26875" />
-        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_new_post.xml" value="0.26875" />
+        <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/fragment_new_post.xml" value="0.1" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/layout/new_post_activity.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/menu/post_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/BUGS/AndroidStudioProjects/NMedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2585" />

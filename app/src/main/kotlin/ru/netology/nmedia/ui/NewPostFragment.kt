@@ -1,4 +1,4 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -7,18 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.nmedia.data.AndroidUtils
-import ru.netology.nmedia.databinding.FragmentNewPostBinding
-import android.widget.EditText
-import android.widget.TextView
-
-
-//import ru.netology.nmedia.databinding.NewPostActivityBinding
-
+import ru.netology.R
+import ru.netology.databinding.FragmentNewPostBinding
+//import ru.netology.databinding.NewPostActivityBinding
+import ru.netology.nmedia.util.AndroidUtils
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class NewPostFragment : Fragment() {
 
@@ -29,19 +28,37 @@ class NewPostFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val binding = FragmentNewPostBinding.inflate(inflater, container, false)
 
-        with(binding) {
-            buttonOk.setOnClickListener {
-//                viewModel.changeContent(text.text.toString())
-//                viewModel.save()
-//
-//                AndroidUtils.hideKeyboard(requireView())
-//                findNavController().navigateUp()
+        with (binding) {
+            buttonOk.setOnClickListener{
                 buttonOkListener(it, text)
+            }
 
 
+        }
+
+
+
+        return binding.root
+    }
+
+    private fun buttonOkListener(view: View, editText: EditText) {
+        viewModel.changeContent(editText.text.toString())
+        viewModel.save()
+
+        AndroidUtils.hideKeyboard(requireView())
+        findNavController().navigateUp()
+    }
+
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        val binding = NewPostActivityBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        with (binding) {
+//            buttonOk.setOnClickListener{
 //                if (text.text.isNullOrBlank()) {
 //                    Toast.makeText(
 //                        this@NewPostFragment,
@@ -53,28 +70,12 @@ class NewPostFragment : Fragment() {
 //                } else {
 //
 //                    setResult(Activity.RESULT_OK,
-//                        Intent().putExtra(Intent.EXTRA_TEXT, text.text.toString())
+//                            Intent().putExtra(Intent.EXTRA_TEXT, text.text.toString())
 //                    )
 //                }
 //
 //                finish()
-
-            }
-
-            return binding.root
-
-        }
-
-
-
-    }
-    private fun buttonOkListener(view: View, editText: EditText) {
-        viewModel.changeContent(editText.text.toString())
-        viewModel.save()
-
-        AndroidUtils.hideKeyboard(requireView())
-        val navigateUp = findNavController().navigateUp()
-
-    }
-
+//            }
+//        }
+//    }
 }

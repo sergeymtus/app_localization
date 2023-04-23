@@ -1,12 +1,15 @@
 <resources>
-    <string name="app_name">NMedia</string>
-    <string name="nmedia">NMedia!</string>
-    <string name="post_menu">Post menu</string>
-    <string name="views">10</string>
-    <string name="post_menu_remove">Remove</string>
+    <string name="app_name">nmedia</string>
+    <string name="nmedia">NMedia!!</string>
+    <string name="textHeader">Netology. University of Internet Professions</string>
+    <string name="textPublished">May 19 at 16:13</string>
+    <string name="textBody">Hello, this is the new Netology! Once upon a time, Netology began with online marketing intensives. Then there were courses on design, development, analytics and management. We grow ourselves and help students grow: from beginners to confident professionals.</string>
     <string name="post_text">Post text</string>
-    <string name="empty_text_error">Text Is Empty</string>
+    <string name="empty_text_error">Text is empty</string>
+    <string name="description_post_like">Like by me</string>
+    <string name="remove">Remove</string>
     <string name="edit">Edit</string>
-    <string name="post_like">Post Like</string>
-    <string name="share_button">Share Button</string>
+    <string name="blank_message_text">Text is blank!</string>
+    <string name="textEditPost">Edit post</string>
+    <string name="textNewPost">New post</string>
 </resources>

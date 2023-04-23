@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">НМедиа</string>
-    <string name="nmedia">НМедиа</string>
-    <string name="post_menu">Меню</string>
-    <string name="views">10</string>
-    <string name="post_menu_remove">Удалить</string>
+    <string name="nmedia">НМедиа!</string>
+    <string name="textHeader">Нетология. Университет интернет-профессий</string>
+    <string name="textPublished">19 мая в 16:13</string>
+    <string name="textBody">Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработки, аналитике и управлению. Мы растем сами и помогаем расти студентам: от новичков до уверенных профессионалов.</string>
     <string name="post_text">Текст поста</string>
-    <string name="edit">Редактировать</string>
-    <string name="empty_text_error">Пустой Текст</string>
-    <string name="post_like">Кнопка Лайк</string>
-    <string name="share_button">Кнопка Поделиться</string>
+    <string name="empty_text_error">Текст пустой</string>
+    <string name="description_post_like">Лайкнуто мной</string>
+    <string name="remove">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="blank_message_text">Текст не заполнен!</string>
+    <string name="textEditPost">Редактирование поста</string>
+    <string name="textNewPost">Новый пост</string>
 </resources>

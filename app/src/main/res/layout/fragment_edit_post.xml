@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="EditPostFragment">
-
-
+    tools:context=".nmedia.ui.EditPostFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Edit post"
+        android:text="@string/textEditPost"
         />
 
     <EditText
@@ -21,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginBottom="?actionBarSize"
-        android:padding="10dp"
+        android:padding="@dimen/mainContentPadding"
         />
 
     <com.google.android.material.bottomappbar.BottomAppBar
