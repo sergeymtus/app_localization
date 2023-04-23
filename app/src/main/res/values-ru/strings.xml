@@ -13,4 +13,7 @@
     <string name="blank_message_text">Текст не заполнен!</string>
     <string name="textEditPost">Редактирование поста</string>
     <string name="textNewPost">Новый пост</string>
+    <string name="notification_user_liked">%1$s поставил лайк посту %2$s</string>
+    <string name="channel_remote_name">Уведомления с сервера</string>
+    <string name="channel_remote_description">Уведомления с удалённого сервера</string>
 </resources>

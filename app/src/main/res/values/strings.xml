@@ -12,4 +12,7 @@
     <string name="blank_message_text">Text is blank!</string>
     <string name="textEditPost">Edit post</string>
     <string name="textNewPost">New post</string>
+    <string name="notification_user_liked">User %1$s liked %2$s\'s post</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
 </resources>

@@ -12,9 +12,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.R
-import ru.netology.databinding.FragmentEditPostBinding
-import ru.netology.databinding.FragmentNewPostBinding
+import ru.netology.nmedia.R
+import ru.netology.nmedia.databinding.FragmentEditPostBinding
+import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.ui.FeedFragment.Companion.postIdArg
 import ru.netology.nmedia.ui.FeedFragment.Companion.textArg
 import ru.netology.nmedia.util.AndroidUtils

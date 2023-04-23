@@ -14,10 +14,10 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.R
+import ru.netology.nmedia.R
 //import ru.netology.databinding.ActivityMainBinding
-import ru.netology.databinding.CardPostBinding
-import ru.netology.databinding.FragmentFeedBinding
+import ru.netology.nmedia.databinding.CardPostBinding
+import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.AndroidUtils
 import ru.netology.nmedia.viewmodel.PostViewModel
