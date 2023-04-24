@@ -75,7 +75,8 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging-ktx"
     implementation "com.google.android.gms:play-services-base:18.1.0"
 
-    def junit_ver = "1.1.5"
+    def junit_ver = "4.13.12"
+    def and_test_ver = "1.1.5"
     testImplementation "junit:junit:$junit_ver"
-    androidTestImplementation "androidx.test.ext:junit:$junit_ver"
+    androidTestImplementation "androidx.test.ext:junit:$and_test_ver"
 }
