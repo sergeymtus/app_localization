@@ -9,6 +9,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
+import com.google.firebase.messaging.FirebaseMessaging
 import ru.netology.nmedia.databinding.ActivityAppBinding
 //import ru.netology.databinding.ActivityIntentHandlerBinding
 
@@ -48,7 +49,10 @@ class AppActivity : AppCompatActivity() {
             }
             Toast.makeText(this@AppActivity, "Google Api Unavailable", Toast.LENGTH_LONG).show()
         }
+        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            println(it)
 
+        }
 
     }
 }
