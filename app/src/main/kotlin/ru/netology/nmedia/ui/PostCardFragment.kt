@@ -42,82 +42,85 @@ class PostCardFragment : Fragment() {
 
 
 
-        viewModel.data.observe(viewLifecycleOwner) { posts ->
-            //adapter.list = posts}
-            val post = posts.first { it.id == postId }
-//            binding.like.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post2.likes)
+//        viewModel.data.observe(viewLifecycleOwner) { posts ->
+//            //adapter.list = posts}
+//            val post = posts.first { it.id == postId }
+////            binding.like.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post2.likes)
+////
+//            //val post = viewModel.getPostById(postId)
 //
             //val post = viewModel.getPostById(postId)
 
-            with(binding) {
-                author.text = post.author
-                published.text = post.published
-                content.text = post.content
-                // likesText.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.likes)
-                like.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.likes)
-                //sharesText.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.shares)
-                share.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.shares)
-//            like.setImageResource(
-//                if (post.likedByMe) R.drawable.ic_like_24 else R.drawable.ic_like_border_24
-//            )
-                like.isChecked = post.likedByMe
-
-                if (post.video.isNullOrBlank()) groupVideo.visibility =
-                    View.GONE else groupVideo.visibility = View.VISIBLE
-
-                like.setOnClickListener {
-                    viewModel.likeById(post.id)
-                }
-
-                share.setOnClickListener {
-                    viewModel.shareById(post.id)
-
-                    val intent = Intent(Intent.ACTION_SEND).apply {
-                        putExtra(Intent.EXTRA_TEXT, post.content)
-                        type = "text/plain"
-                    }
-
-                    startActivity(intent)
-                }
-
-                videoPlayButton.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
-                    startActivity(intent)
-                }
-
-                videoImage.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
-                    startActivity(intent)
-                }
-
-                menu.setOnClickListener {
-                    PopupMenu(it.context, it).apply {
-                        inflate(R.menu.options_post)
-                        setOnMenuItemClickListener { item ->
-                            when (item.itemId) {
-                                R.id.remove -> {
-                                    viewModel.removeById(post.id)
-                                    findNavController().navigateUp()
-                                    true
-                                }
-                                R.id.edit -> {
-                                    findNavController().navigate(R.id.action_postCardFragment_to_editPostFragment,
-                                        Bundle().apply {
-                                            textArg = post.content
-                                            postIdArg = post.id
-                                        })
-                                    true
-                                }
-                                else -> false
-                            }
-
-                        }
-                    }.show()
-                }
-
-
-            }
-        }
+        //            with(binding) {
+//                author.text = post.author
+//                published.text = post.published
+//                content.text = post.content
+//                // likesText.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.likes)
+//                like.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.likes)
+//                //sharesText.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.shares)
+//                share.text = extraViewFunctions().stringNumberWithKInsteadOf1000(post.shares)
+////            like.setImageResource(
+////                if (post.likedByMe) R.drawable.ic_like_24 else R.drawable.ic_like_border_24
+////            )
+//                like.isChecked = post.likedByMe
+//
+//                if (post.video.isNullOrBlank()) groupVideo.visibility =
+//                    View.GONE else groupVideo.visibility = View.VISIBLE
+//
+//                like.setOnClickListener {
+//                    viewModel.likeById(post.id)
+//                    context.let { PushSender().sendPushLikeTest(it, post) }
+//                }
+//
+//                share.setOnClickListener {
+//                    viewModel.shareById(post.id)
+//
+//                    val intent = Intent(Intent.ACTION_SEND).apply {
+//                        putExtra(Intent.EXTRA_TEXT, post.content)
+//                        type = "text/plain"
+//                    }
+//
+//                    startActivity(intent)
+//                }
+//
+//                videoPlayButton.setOnClickListener {
+//                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+//                    startActivity(intent)
+//                }
+//
+//                videoImage.setOnClickListener {
+//                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+//                    startActivity(intent)
+//                }
+//
+//                menu.setOnClickListener {
+//                    PopupMenu(it.context, it).apply {
+//                        inflate(R.menu.options_post)
+//                        setOnMenuItemClickListener { item ->
+//                            when (item.itemId) {
+//                                R.id.remove -> {
+//                                    viewModel.removeById(post.id)
+//                                    findNavController().navigateUp()
+//                                    true
+//                                }
+//                                R.id.edit -> {
+//                                    findNavController().navigate(R.id.action_postCardFragment_to_editPostFragment,
+//                                        Bundle().apply {
+//                                            textArg = post.content
+//                                            postIdArg = post.id
+//                                        })
+//                                    true
+//                                }
+//                                else -> false
+//                            }
+//
+//                        }
+//                    }.show()
+//                }
+//
+//
+//            }
+//        }
 
         return binding.root
     }

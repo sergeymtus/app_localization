@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import android.widget.Toast
 import androidx.activity.result.launch
 import androidx.activity.viewModels
@@ -72,6 +73,7 @@ class FeedFragment : Fragment() {
 
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
+                //viewModel.loadPosts()
             }
 
             override fun onRemove(post: Post) {
@@ -112,9 +114,15 @@ class FeedFragment : Fragment() {
 
 
         binding.list.adapter = adapter
-        viewModel.data.observe(viewLifecycleOwner) { posts ->
-            //adapter.list = posts}
-            adapter.submitList(posts)
+        viewModel.data.observe(viewLifecycleOwner, { state ->
+            adapter.submitList(state.posts)
+            binding.progress.isVisible = state.loading
+            binding.errorGroup.isVisible = state.error
+            binding.emptyText.isVisible = state.empty
+        })
+
+        binding.retryButton.setOnClickListener{
+            viewModel.loadPosts()
         }
 
 
