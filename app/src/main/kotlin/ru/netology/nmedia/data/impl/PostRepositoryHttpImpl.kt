@@ -6,8 +6,7 @@ import androidx.lifecycle.Transformations
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
@@ -15,13 +14,14 @@ import ru.netology.nmedia.sql.PostDao
 import ru.netology.nmedia.sqlRoom.PostEntity
 import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
+import java.io.IOException
 
-class PostRepositoryHttpImpl:PostRepository {
+class PostRepositoryHttpImpl : PostRepository {
     private val client = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .build()
     private val gson = Gson()
-    private val typeToken = object : TypeToken<List<Post>>(){}
+    private val typeToken = object : TypeToken<List<Post>>() {}
     private val typeTokenPost = object : TypeToken<Post>(){}
 
     companion object {
@@ -37,9 +37,32 @@ class PostRepositoryHttpImpl:PostRepository {
 
         return client.newCall(request)
             .execute()
-            .let{ it.body?.string() ?: throw RuntimeException("body is null")}
-            .let{gson.fromJson(it, typeToken.type)}
+            .let { it.body?.string() ?: throw RuntimeException("body is null") }
+            .let { gson.fromJson(it, typeToken.type) }
     }
+
+    override fun getAllAsync(callback: PostRepository.GetAllCallback) {
+        val request: Request = Request.Builder()
+            .url("${BASE_URL}/api/slow/posts")
+            .build()
+
+        client.newCall(request)
+            .enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val body = response.body?.string() ?: throw RuntimeException("body is null")
+                    try {
+                        callback.onSuccess(gson.fromJson(body, typeToken.type))
+                    } catch (e: Exception) {
+                        callback.onError(e)
+                    }
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                    callback.onError(e)
+                }
+            })
+    }
+
 
     override fun getPostById(id: Long): Post {
         //val post1Element = posts.filter { it.id == id }
@@ -53,7 +76,7 @@ class PostRepositoryHttpImpl:PostRepository {
         //return Post(0, "", "", "")
     }
 
-    override fun likeById(id: Long):Post {
+    override fun likeById(id: Long): Post {
         // dao.likeById(id)
         val emptyPost = Post(0, "", "", "")
 
@@ -94,11 +117,44 @@ class PostRepositoryHttpImpl:PostRepository {
         return emptyPost
     }
 
+    override fun likeByIdAsync(
+        id: Long,
+        likedByMe: Boolean,
+        callback: PostRepository.CallbackWithPostOnSuccess
+    ) {
+
+        val request: Request = Request.Builder()
+            .method(if (likedByMe) "POST" else "DELETE", "".toRequestBody())
+            .url("${BASE_URL}/api/posts/$id/likes")
+            .build()
+
+        client.newCall(request)
+            .enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+
+                    val body = response.body?.string() ?: throw RuntimeException("body is null")
+                    val newPost = gson.fromJson(body, Post::class.java)
+
+                    try {
+                        callback.onSuccess(newPost)
+                    } catch (e: Exception) {
+                        callback.onError(e)
+                    }
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                    callback.onError(e)
+                }
+            })
+    }
+
+
     override fun shareById(id: Long) {
         //dao.shareById(id)
     }
 
     override fun save(post: Post) {
+        //До асинхронов+
         val request: Request = Request.Builder()
             .post(gson.toJson(post).toRequestBody(jsonType))
             .url("${BASE_URL}/api/slow/posts")
@@ -107,6 +163,31 @@ class PostRepositoryHttpImpl:PostRepository {
         client.newCall(request)
             .execute()
             .close()
+        //До асинхронов-
+    }
+
+    override fun saveAsync(post: Post, callback: PostRepository.CallbackWithNoParameters) {
+
+        val request: Request = Request.Builder()
+            .post(gson.toJson(post).toRequestBody(jsonType))
+            .url("${BASE_URL}/api/slow/posts")
+            .build()
+
+        client.newCall(request)
+            .enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    println("!!!!!! Response on save post in PostRepositoryImpl")
+                    callback.onSuccess()
+
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                    // Toast.makeText(this, "some error on save in repositoryImpl", Toast.LENGTH_LONG).show()
+                    callback.onError(e)
+                    println("!!!!!! error on save post in PostRepositoryImpl")
+                }
+            }
+            )
     }
 
     override fun removeById(id: Long) {
@@ -118,6 +199,30 @@ class PostRepositoryHttpImpl:PostRepository {
         client.newCall(request)
             .execute()
             .close()
+    }
+
+    override fun removeByIdAsync(id: Long, callback: PostRepository.CallbackWithNoParameters) {
+
+        val request: Request = Request.Builder()
+            .delete()
+            .url("${BASE_URL}/api/slow/posts/$id")
+            .build()
+
+        client.newCall(request)
+            .enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    println("!!!!!! Response on removeByIdAsync post in PostRepositoryImpl")
+                    callback.onSuccess()
+
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                    // Toast.makeText(this, "some error on save in repositoryImpl", Toast.LENGTH_LONG).show()
+                    callback.onError(e)
+                    println("!!!!!! error on removeByIdAsync in PostRepositoryImpl")
+                }
+            }
+            )
     }
 
     override fun editById(id: Long, content: String) {
