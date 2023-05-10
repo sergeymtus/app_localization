@@ -81,10 +81,10 @@
         android:id="@+id/groupVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="videoImage, videoPlayButton" />
+        app:constraint_referenced_ids="attachmentImage, videoPlayButton" />
 
     <ImageView
-        android:id="@+id/videoImage"
+        android:id="@+id/attachmentImage"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="@dimen/mainContentPadding"
@@ -98,10 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/description_post_like"
-        app:layout_constraintStart_toStartOf="@id/videoImage"
-        app:layout_constraintEnd_toEndOf="@id/videoImage"
-        app:layout_constraintTop_toTopOf="@id/videoImage"
-        app:layout_constraintBottom_toBottomOf="@id/videoImage"
+        app:layout_constraintStart_toStartOf="@id/attachmentImage"
+        app:layout_constraintEnd_toEndOf="@id/attachmentImage"
+        app:layout_constraintTop_toTopOf="@id/attachmentImage"
+        app:layout_constraintBottom_toBottomOf="@id/attachmentImage"
         app:icon="@drawable/ic_baseline_play_circle_filled_24"
         style="@style/Widget.AppTheme.LikeCheckBox"
 
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
 
-        app:layout_constraintTop_toBottomOf="@id/videoImage"
+        app:layout_constraintTop_toBottomOf="@id/attachmentImage"
         />
 
     <!-- <ImageButton

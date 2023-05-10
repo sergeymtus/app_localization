@@ -15,6 +15,7 @@ import ru.netology.nmedia.sqlRoom.PostEntity
 import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
 import java.io.IOException
+import ru.netology.nmedia.data.EMPTY_POST
 
 class PostRepositoryHttpImpl : PostRepository {
     private val client = OkHttpClient.Builder()
@@ -74,11 +75,13 @@ class PostRepositoryHttpImpl : PostRepository {
         }
 
         //return Post(0, "", "", "")
+        return EMPTY_POST
     }
 
     override fun likeById(id: Long): Post {
         // dao.likeById(id)
-        val emptyPost = Post(0, "", "", "")
+//        val emptyPost = Post(0, "", "", "")
+        val emptyPost = EMPTY_POST
 
         val post = getPostById(id)
 

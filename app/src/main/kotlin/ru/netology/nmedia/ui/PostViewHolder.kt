@@ -8,6 +8,9 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.ui.OnInteractionListener
+import com.bumptech.glide.Glide
+import ru.netology.nmedia.data.BASE_URL
+
 
 //import ru.netology.nmedia.ui.extraViewFunctions
 
@@ -43,9 +46,9 @@ class PostViewHolder(
                 listener.onVideoLink(post)
             }
 
-            videoImage.setOnClickListener {
-                listener.onVideoLink(post)
-            }
+//            videoImage.setOnClickListener {
+//                listener.onVideoLink(post)
+//            }
 
             rootXmlElement.setOnClickListener {
                 listener.onOpenPost(post)
@@ -70,6 +73,22 @@ class PostViewHolder(
                     }
                 }.show()
             }
+            Glide.with(avatar)
+                .load("$BASE_URL/avatars/${post.authorAvatar}")
+                .timeout(30_000)
+                .circleCrop()
+                .placeholder(R.mipmap.ic_launcher_round)
+                .into(avatar)
+
+            //attachmentImage.isVisible = post.attachment != null
+            attachmentImage.visibility = if (post.attachment == null) View.GONE else View.VISIBLE
+            Glide.with(attachmentImage)
+                .load("$BASE_URL/images/${post.attachment?.url}")
+                .timeout(30_000)
+                .placeholder(R.mipmap.ic_launc
+
+
+
         }
     }
 }

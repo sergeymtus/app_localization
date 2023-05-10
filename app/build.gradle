@@ -4,6 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.kapt'
     id "com.google.gms.google-services"
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 32
@@ -86,5 +87,13 @@ dependencies {
 
     def okhttp_ver = "4.9.1"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_ver"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    def glide_ver = "4.13.2"
+    implementation "com.github.bumptech.glide:glide:$glide_ver"
 
 }
+//repositories {
+//    mavenCentral()
+//}
