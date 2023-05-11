@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import ru.netology.nmedia.data.BASE_URL
 
 
-//import ru.netology.nmedia.ui.extraViewFunctions
+import ru.netology.nmedia.ui.extraViewFunctions
 
 class PostViewHolder(
     private val binding: CardPostBinding,
@@ -85,7 +85,9 @@ class PostViewHolder(
             Glide.with(attachmentImage)
                 .load("$BASE_URL/images/${post.attachment?.url}")
                 .timeout(30_000)
-                .placeholder(R.mipmap.ic_launc
+                .placeholder(R.mipmap.ic_launcher_round)
+                .into(attachmentImage)
+
 
 
 
