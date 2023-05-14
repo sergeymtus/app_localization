@@ -2,11 +2,13 @@ package ru.netology.nmedia.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
-import ru.netology.nmedia.dto.Post
-import androidx.lifecycle.LiveData
 import ru.netology.nmedia.data.impl.PostRepositoryHttpImpl
+import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewmodel.FeedModel
+import ru.netology.nmedia.sql.AppDb
 import ru.netology.nmedia.util.SingleLiveEvent
 import java.io.IOException
 import kotlin.concurrent.thread
@@ -65,11 +67,11 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         _data.value = FeedModel(loading = true)
         repository.getAllAsync(object : PostRepository.GetAllCallback {
             override fun onSuccess(posts: List<Post>) {
-                _data.postValue(FeedModel(posts = posts, empty = posts.isEmpty()))
+                _data.value = FeedModel(posts = posts, empty = posts.isEmpty())
             }
 
             override fun onError(e: Exception) {
-                _data.postValue(FeedModel(error = true))
+                _data.value = FeedModel(error = true)
             }
         })
     }
@@ -93,10 +95,35 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 //            _data.postValue(FeedModel(posts = newPosts))
 //        }
 
+
+        //До ретрофит+
+//        val oldPosts = _data.value?.posts.orEmpty()
+//        val oldPost = oldPosts.filter { id == it.id }.first()
+//
+//        repository.likeByIdAsync(id, !oldPost.likedByMe,
+//            object : PostRepository.CallbackWithPostOnSuccess {
+//                override fun onSuccess(post: Post) {
+//                    println("!!!!!!! onSuccess in likeById in viewModel")
+//
+//                    val newPosts = oldPosts.map {
+//                        if (it.id == id) post else it
+//                    }
+//
+//
+//                    _data.postValue(FeedModel(posts = newPosts))
+//                }
+//
+//                override fun onError(e: Exception) {
+//                    println("!!!!!!! onSuccess in likeById in viewModel")
+//                }
+//            }
+//        )
+        //До ретрофит-
+
         val oldPosts = _data.value?.posts.orEmpty()
         val oldPost = oldPosts.filter { id == it.id }.first()
 
-        repository.likeByIdAsync(id, !oldPost.likedByMe,
+        repository.likeByIdRetrofit(id, !oldPost.likedByMe,
             object : PostRepository.CallbackWithPostOnSuccess {
                 override fun onSuccess(post: Post) {
                     println("!!!!!!! onSuccess in likeById in viewModel")
@@ -165,10 +192,29 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     fun editById(id: Long, content: String) = repository.editById(id, content)
 
     fun save() {
+
+        //        _data.value = FeedModel(loading = true)
+//        edited.value?.let {
+//            repository.saveAsync(it, object : PostRepository.CallbackWithNoParameters {
+//                override fun onSuccess() {
+//                    _postCreated.postValue(Unit)
+//                    println("!!!!!!!Success on save in viewModel!!!!!!!!!")
+//                }
+//
+//                override fun onError(e: Exception) {
+//                    println("!!!!!!!error on save post in viewModel!!!!!!!!!")
+//                }
+//            })
+//        }
+//
+//        edited.value = empty
+
         _data.value = FeedModel(loading = true)
         edited.value?.let {
-            repository.saveAsync(it, object : PostRepository.CallbackWithNoParameters {
-                override fun onSuccess() {
+            repository.save(it,
+                object : PostRepository.CallbackWithPostOnSuccess {
+
+                    override fun onSuccess(post: Post) {
                     _postCreated.postValue(Unit)
                     println("!!!!!!!Success on save in viewModel!!!!!!!!!")
                 }

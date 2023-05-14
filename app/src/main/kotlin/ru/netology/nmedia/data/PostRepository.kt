@@ -12,12 +12,13 @@ interface PostRepository {
     fun getPostById(id: Long): Post
     fun likeById(id: Long):Post
     fun shareById(id: Long)
-    fun save(post: Post)
+    fun save(post: Post, callback: CallbackWithPostOnSuccess)
     fun removeById(id: Long)
     fun editById(id: Long, content: String)
 
     fun getAllAsync(callback: GetAllCallback)
     fun likeByIdAsync(id: Long, likedByMe: Boolean, callback: CallbackWithPostOnSuccess)
+    fun likeByIdRetrofit(id: Long, likedByMe: Boolean, callback: CallbackWithPostOnSuccess)
     fun saveAsync(post: Post, callback: CallbackWithNoParameters)
     fun removeByIdAsync(id: Long, callback: CallbackWithNoParameters)
 

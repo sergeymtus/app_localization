@@ -119,9 +119,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             manifestPlaceholders.usesCleartextTraffic = false
+            buildConfigField "String", "BASE_URL", '"http://10.0.2.2:9999/api/slow/"'
         }
         debug {
             manifestPlaceholders.usesCleartextTraffic = true
+            buildConfigField "String", "BASE_URL", '"http://10.0.2.2:9999/api/slow/"'
         }
     }
     compileOptions {
@@ -168,6 +170,14 @@ dependencies {
 
     def glide_ver = "4.13.2"
     implementation "com.github.bumptech.glide:glide:$glide_ver"
+
+    def retrofit_version = "2.9.0"
+    def retrofitgson_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitgson_version"
+
+    def okhttploggin_version = "4.10.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttploggin_version"
 
 
 }
