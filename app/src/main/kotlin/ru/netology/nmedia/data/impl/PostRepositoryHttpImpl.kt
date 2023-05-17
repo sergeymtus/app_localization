@@ -20,6 +20,7 @@ import ru.netology.nmedia.BuildConfig
 import ru.netology.nmedia.api.PostsApi
 import ru.netology.nmedia.api.PostsApiService
 import ru.netology.nmedia.data.EMPTY_POST
+import java.net.ConnectException
 
 class PostRepositoryHttpImpl : PostRepository {
 
@@ -55,7 +56,7 @@ class PostRepositoryHttpImpl : PostRepository {
                     }
 
                     override fun onFailure(call: retrofit2.Call<List<Post>>, t: Throwable) {
-                TODO("Not yet implemented")
+                        callback.onError(ConnectException("Connection is lost"))
                 }
             })
     }
@@ -177,7 +178,7 @@ class PostRepositoryHttpImpl : PostRepository {
                     }
 
                     override fun onFailure(call: retrofit2.Call<Post>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        callback.onError(ConnectException("Connection is lost"))
                     }
                 })
         } else {
@@ -202,7 +203,7 @@ class PostRepositoryHttpImpl : PostRepository {
                     }
 
                     override fun onFailure(call: retrofit2.Call<Post>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        callback.onError(ConnectException("Connection is lost"))
                     }
                 })
         }
@@ -260,7 +261,7 @@ class PostRepositoryHttpImpl : PostRepository {
                 }
 
                 override fun onFailure(call: retrofit2.Call<Post>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    callback.onError(ConnectException("Connection is lost"))
                 }
             })
     }
